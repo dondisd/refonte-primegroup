@@ -143,7 +143,7 @@ section { position: relative; padding: 0 6vw; }
 /* Footer */
 .foot {
   position: relative; z-index: 1;
-  padding: 26px 6vw 34px; border-top: 1px solid rgba(215,226,234,.14);
+  padding: 44px 6vw 56px; border-top: 1px solid rgba(215,226,234,.14);
   display: flex; flex-wrap: wrap; gap: 10px 30px; justify-content: space-between;
 }
 .foot a { color: rgba(215,226,234,.85); }

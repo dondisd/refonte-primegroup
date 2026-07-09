@@ -25,13 +25,13 @@
   const ctx = canvas.getContext('2d');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  let W = 0, H = 0, DPR = 1, particles = [], maxR = 0;
+  let W = 0, H = 0, DPR = 1, particles = [], maxR = 0, CX = 0, CY = 0;
   const mouse = { x: -9999, y: -9999 };
 
   function sampleGlyph() {
     // Échantillonne les pixels du glyphe « P » (Archivo Black) sur un canvas hors écran.
     const mobile = W < 760;
-    const size = Math.min(H * 0.62, W * (mobile ? 0.8 : 0.42));
+    const size = Math.min(H * (mobile ? 0.42 : 0.62), W * (mobile ? 0.72 : 0.42));
     const off = document.createElement('canvas');
     const s = Math.ceil(size);
     off.width = s; off.height = s;
@@ -43,8 +43,8 @@
     octx.fillText('P', s / 2, s * 0.56);
     const data = octx.getImageData(0, 0, s, s).data;
 
-    const cx = mobile ? W * 0.5 : W * 0.66; // P centré-droit sur desktop
-    const cy = H * 0.44;
+    const cx = CX = mobile ? W * 0.5 : W * 0.66; // P centré-droit sur desktop, haut-centre sur mobile
+    const cy = CY = H * (mobile ? 0.3 : 0.44);
     const step = Math.max(3, Math.round(s / (mobile ? 42 : 64)));
     const pts = [];
     for (let y = 0; y < s; y += step) {
@@ -100,8 +100,8 @@
       // Cible : position du glyphe, déplacée le long de son angle quand E monte
       const spread = E * (0.25 + p.seed * 0.75) * maxR;
       const a = p.ang + swirl * (p.seed - 0.5) * 2 + E * Math.sin(t * 0.5 + p.seed * 6.28) * 0.15;
-      const tx = (p.hx - W * (W < 760 ? 0.5 : 0.66)) * breath + W * (W < 760 ? 0.5 : 0.66) + Math.cos(a) * spread;
-      const ty = (p.hy - H * 0.44) * breath + H * 0.44 + Math.sin(a) * spread;
+      const tx = (p.hx - CX) * breath + CX + Math.cos(a) * spread;
+      const ty = (p.hy - CY) * breath + CY + Math.sin(a) * spread;
 
       // Ressort vers la cible
       p.x += (tx - p.x) * 0.07;
