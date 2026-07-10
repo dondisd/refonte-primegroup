@@ -20,9 +20,9 @@
   let active = 0;
 
   function layerFor(f) {
-    if (f < 0.14) return 0;      // hero : P assemblé
-    if (f < 0.56) return 1;      // eau / marques / média : mèches décorticées
-    if (f < 0.80) return 2;      // avantage : braises
+    if (f < 0.10) return 0;      // hero : P assemblé
+    if (f < 0.52) return 1;      // eau / marques / média : mèches décorticées
+    if (f < 0.78) return 2;      // avantage : braises
     return 0;                    // finale : le P se reforme au CTA
   }
 
