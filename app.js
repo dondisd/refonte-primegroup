@@ -30,13 +30,13 @@
     menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => toggle(false)));
   }
 
-  /* Vidéo hero : lecture après window.load (le poster léger porte le LCP) */
-  const vid = document.querySelector('.hero-bg');
-  if (vid && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const boot = () => { vid.load(); vid.play().catch(() => {}); };
+  /* Vidéos de fond : lecture après window.load (les posters légers portent le LCP) */
+  const vids = [...document.querySelectorAll('.hero-bg, .usecase-bg')];
+  if (vids.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const boot = () => vids.forEach((v) => { v.load(); v.play().catch(() => {}); });
     if (document.readyState === 'complete') boot();
     else addEventListener('load', boot, { once: true });
-    const kick = () => { if (vid.paused) { vid.play().catch(() => {}); } };
+    const kick = () => vids.forEach((v) => { if (v.paused) v.play().catch(() => {}); });
     addEventListener('touchstart', kick, { once: true, passive: true });
     addEventListener('click', kick, { once: true });
   }
