@@ -48,6 +48,7 @@ body { background: var(--noir); color: var(--blanc); font-family: 'Inter', sans-
   position: fixed; inset: 0; z-index: 50; background: rgba(8, 6, 5, .97);
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px;
 }
+.menu[hidden] { display: none; }
 .menu a { font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 22px; color: #fff; text-decoration: none; }
 
 /* Boutons (Cabin / Manrope semibold) */
