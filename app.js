@@ -31,7 +31,7 @@
   }
 
   /* Vidéos de fond : lecture après window.load (les posters légers portent le LCP) */
-  const vids = [...document.querySelectorAll('.hero-bg, .usecase-bg')];
+  const vids = [...document.querySelectorAll('.hero-bg, .usecase-bg, .foot-bg')];
   if (vids.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const boot = () => vids.forEach((v) => { v.load(); v.play().catch(() => {}); });
     if (document.readyState === 'complete') boot();

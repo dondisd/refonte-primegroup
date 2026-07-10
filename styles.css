@@ -230,27 +230,46 @@ section { padding: 96px 24px; }
 }
 .know:hover .circ2 { background: #fff; }
 
-/* Finale */
-.finale { border-top: 1px solid rgba(255,255,255,.08); }
-.coords { margin-top: 5svh; color: rgba(255,255,255,.6); font-size: 15px; }
-.coords a { color: rgba(255,255,255,.85); }
-.socials { display: flex; gap: 12px; margin-top: 16px; }
+/* Footer-hero : grande carte vidéo arrondie (structure du hero Halo, sans navbar) */
+.footwrap { padding: 24px 24px 0; }
+.footcard {
+  position: relative; border-radius: 20px; overflow: hidden;
+  min-height: min(86svh, 860px);
+  display: flex;
+}
+.foot-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.foot-overlay {
+  position: relative; z-index: 10; width: 100%;
+  display: flex; flex-direction: column; align-items: flex-start;
+  padding: clamp(28px, 5vw, 56px);
+}
+.foot-title {
+  font-family: 'Instrument Serif', serif; font-weight: 400; letter-spacing: -.01em;
+  font-size: clamp(2.6rem, 6vw, 72px); line-height: 1.05; color: #fff; margin-bottom: 16px;
+}
+.foot-title em { font-style: italic; }
+.foot-sub { font-family: 'Inter', sans-serif; color: rgba(255,255,255,.82); max-width: 27rem; margin-bottom: 26px; }
+.btn-light { background: var(--blanc); color: #171717; }
+.btn-light:hover { filter: brightness(.93); }
+.circ-dark { background: #200d05; color: var(--orange-2); }
+.foot-coords { margin-top: 34px; color: rgba(255,255,255,.75); font-size: 15px; display: flex; flex-direction: column; gap: 6px; }
+.foot-coords a { color: #fff; }
+.socials { display: flex; gap: 12px; margin-top: 12px; }
 .socials a {
   display: inline-flex; align-items: center; justify-content: center;
   width: 42px; height: 42px; border-radius: 50%;
-  border: 1px solid rgba(255,255,255,.35); color: #fff;
+  border: 1px solid rgba(255,255,255,.45); color: #fff;
   transition: background .2s, color .2s, transform .1s;
 }
 .socials a:hover { background: #fff; color: var(--noir); }
 .socials a:active { transform: scale(.94); }
-
-/* Footer */
-.foot {
-  padding: 36px 24px 48px; border-top: 1px solid rgba(255,255,255,.1);
+.foot-marquee { margin-top: auto; padding-top: 40px; width: min(560px, 100%); overflow: hidden; align-self: flex-start; }
+.foot-legal {
+  padding: 26px 8px 36px;
   display: flex; flex-wrap: wrap; gap: 8px 30px; justify-content: space-between;
   font-size: 13px; color: rgba(255,255,255,.55);
 }
-.foot a { color: rgba(255,255,255,.8); }
+.foot-legal a { color: rgba(255,255,255,.8); }
 
 /* Reveals */
 [data-reveal] { opacity: 0; transform: translateY(20px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
