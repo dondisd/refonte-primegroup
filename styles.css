@@ -21,8 +21,18 @@ body {
 }
 .mono { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .08em; color: rgba(215, 226, 234, .62); }
 
-/* Canvas du P en particules : fixe, derrière tout */
-#pcanvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; }
+/* Fond vidéo : P en fibre optique (3 couches crossfadées au scroll), fixe derrière tout */
+.bgstack { position: fixed; inset: 0; z-index: 0; background: var(--noir); }
+.bgvid {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; opacity: 0; transition: opacity .9s ease;
+}
+.bgvid.on { opacity: 1; }
+.bgshade { position: absolute; inset: 0; background: rgba(6, 6, 7, .34); }
+@media (prefers-reduced-motion: reduce) {
+  .bgvid { display: none; }
+  .bgstack { background: var(--noir) url('assets/p-poster.jpg') center / cover no-repeat; }
+}
 
 /* Barre de progression */
 .progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--grad); z-index: 60; }

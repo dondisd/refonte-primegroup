@@ -13,7 +13,13 @@
 </head>
 <body>
   <div class="progress" aria-hidden="true"></div>
-  <canvas id="pcanvas" aria-hidden="true"></canvas>
+  <!-- Fond vidéo (P en fibre optique, 3 états crossfadés au scroll : assemblé -> mèches -> braises -> reformé) -->
+  <div class="bgstack" aria-hidden="true">
+    <video class="bgvid on" id="bg1" src="assets/p-hero.mp4" poster="assets/p-poster.jpg" muted loop playsinline autoplay></video>
+    <video class="bgvid" id="bg2" src="assets/p-strands.mp4" muted loop playsinline preload="metadata"></video>
+    <video class="bgvid" id="bg3" src="assets/p-embers.mp4" muted loop playsinline preload="metadata"></video>
+    <div class="bgshade"></div>
+  </div>
 
   <header class="nav">
     <a class="brand" href="#top" aria-label="PRIME — accueil">
