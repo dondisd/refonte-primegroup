@@ -47,9 +47,14 @@
   addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // Autoplay de secours (politiques mobiles) : relance au premier geste
+  // Lecture APRÈS window.load : le poster (préchargé, léger) porte le LCP,
+  // les mp4 ne concurrencent jamais le chemin critique.
   if (!reduced) {
-    const kick = () => { const v = vids[active]; if (v && v.paused) v.play().catch(() => {}); };
+    const boot = () => { const v = vids[0]; if (v) { v.load(); v.play().catch(() => {}); } };
+    if (document.readyState === 'complete') boot();
+    else addEventListener('load', boot, { once: true });
+    // Secours politiques d'autoplay mobiles : relance au premier geste
+    const kick = () => { const v = vids[active]; if (v && v.paused) { v.load(); v.play().catch(() => {}); } };
     addEventListener('touchstart', kick, { once: true, passive: true });
     addEventListener('click', kick, { once: true });
   }

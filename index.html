@@ -8,6 +8,7 @@
   <link rel="icon" type="image/png" href="assets/logo-prime.png">
   <link rel="preload" href="fonts/ArchivoBlack-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/Archivo-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/p-poster.jpg" as="image">
   <link rel="stylesheet" href="fonts/fonts.css">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -15,9 +16,9 @@
   <div class="progress" aria-hidden="true"></div>
   <!-- Fond vidéo (P en fibre optique, 3 états crossfadés au scroll : assemblé -> mèches -> braises -> reformé) -->
   <div class="bgstack" aria-hidden="true">
-    <video class="bgvid on" id="bg1" src="assets/p-hero.mp4" poster="assets/p-poster.jpg" muted loop playsinline autoplay></video>
-    <video class="bgvid" id="bg2" src="assets/p-strands.mp4" muted loop playsinline preload="metadata"></video>
-    <video class="bgvid" id="bg3" src="assets/p-embers.mp4" muted loop playsinline preload="metadata"></video>
+    <video class="bgvid on" id="bg1" src="assets/p-hero.mp4" poster="assets/p-poster.jpg" muted loop playsinline preload="none"></video>
+    <video class="bgvid" id="bg2" src="assets/p-strands.mp4" muted loop playsinline preload="none"></video>
+    <video class="bgvid" id="bg3" src="assets/p-embers.mp4" muted loop playsinline preload="none"></video>
     <div class="bgshade"></div>
   </div>
 
