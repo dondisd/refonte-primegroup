@@ -1,60 +1,42 @@
-/* PRIME — fond vidéo « P en fibre optique » (clips IA générés, réf. Future-State) :
-   3 couches crossfadées selon la position de scroll :
-   hero = P assemblé -> chapitres = mèches décorticées -> avantage = braises -> finale = P reformé.
-   + barre de progression et reveals. Vanilla, zéro lib. */
+/* PRIME v3 — hero vidéo + menu mobile + progression + reveals. Vanilla, zéro lib. */
 (() => {
   'use strict';
 
-  /* ── Barre de progression ───────────────────────────────────────── */
+  /* Progression */
   const bar = document.querySelector('.progress');
+  const onScroll = () => {
+    const h = document.documentElement;
+    const f = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight);
+    if (bar) bar.style.width = (f * 100).toFixed(2) + '%';
+  };
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-  /* ── Reveals ────────────────────────────────────────────────────── */
+  /* Reveals */
   const io = new IntersectionObserver((es) => {
     es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.2 });
   document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
 
-  /* ── Fond vidéo : sélection de la couche selon le scroll ───────── */
-  const vids = [document.getElementById('bg1'), document.getElementById('bg2'), document.getElementById('bg3')];
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let active = 0;
-
-  function layerFor(f) {
-    if (f < 0.10) return 0;      // hero : P assemblé
-    if (f < 0.52) return 1;      // eau / marques / média : mèches décorticées
-    if (f < 0.78) return 2;      // avantage : braises
-    return 0;                    // finale : le P se reforme au CTA
+  /* Menu mobile plein écran */
+  const burger = document.querySelector('.burger');
+  const menu = document.querySelector('.menu');
+  if (burger && menu) {
+    const toggle = (open) => {
+      menu.hidden = !open;
+      burger.setAttribute('aria-expanded', String(open));
+    };
+    burger.addEventListener('click', () => toggle(menu.hidden));
+    menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => toggle(false)));
   }
 
-  function setLayer(i) {
-    if (i === active) return;
-    active = i;
-    vids.forEach((v, k) => {
-      if (!v) return;
-      v.classList.toggle('on', k === i);
-      if (k === i) { v.play().catch(() => {}); }
-    });
-    // Pause des couches invisibles après le fondu (économie CPU/batterie)
-    setTimeout(() => vids.forEach((v, k) => { if (v && k !== active) v.pause(); }), 1000);
-  }
-
-  function onScroll() {
-    const h = document.documentElement;
-    const f = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight);
-    if (bar) bar.style.width = (f * 100).toFixed(2) + '%';
-    if (!reduced) setLayer(layerFor(f));
-  }
-  addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  // Lecture APRÈS window.load : le poster (préchargé, léger) porte le LCP,
-  // les mp4 ne concurrencent jamais le chemin critique.
-  if (!reduced) {
-    const boot = () => { const v = vids[0]; if (v) { v.load(); v.play().catch(() => {}); } };
+  /* Vidéo hero : lecture après window.load (le poster léger porte le LCP) */
+  const vid = document.querySelector('.hero-bg');
+  if (vid && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const boot = () => { vid.load(); vid.play().catch(() => {}); };
     if (document.readyState === 'complete') boot();
     else addEventListener('load', boot, { once: true });
-    // Secours politiques d'autoplay mobiles : relance au premier geste
-    const kick = () => { const v = vids[active]; if (v && v.paused) { v.load(); v.play().catch(() => {}); } };
+    const kick = () => { if (vid.paused) { vid.play().catch(() => {}); } };
     addEventListener('touchstart', kick, { once: true, passive: true });
     addEventListener('click', kick, { once: true });
   }

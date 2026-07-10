@@ -4,119 +4,161 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PRIME — Le groupe qui bâtit les marques de boissons du Québec</title>
-  <meta name="description" content="PRIME bâtit les marques de boissons du Québec : les plus grandes réserves d'eau de source de la province, un portefeuille de marques et une machine média de 15 millions de vues par mois.">
+  <meta name="description" content="PRIME bâtit les marques de boissons du Québec : les plus grandes réserves d'eau de source de la province, un portefeuille de marques et une machine média de 15 millions de vues par mois. PRME au CSE.">
   <link rel="icon" type="image/png" href="assets/logo-prime.png">
-  <link rel="preload" href="fonts/ArchivoBlack-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/Archivo-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/p-poster.jpg" as="image">
+  <link rel="preload" href="fonts/InstrumentSerif-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/Manrope-500.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/hero-poster.jpg" as="image">
   <link rel="stylesheet" href="fonts/fonts.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="progress" aria-hidden="true"></div>
-  <!-- Fond vidéo (P en fibre optique, 3 états crossfadés au scroll : assemblé -> mèches -> braises -> reformé) -->
-  <div class="bgstack" aria-hidden="true">
-    <video class="bgvid on" id="bg1" src="assets/p-hero.mp4" poster="assets/p-poster.jpg" muted loop playsinline preload="none"></video>
-    <video class="bgvid" id="bg2" src="assets/p-strands.mp4" muted loop playsinline preload="none"></video>
-    <video class="bgvid" id="bg3" src="assets/p-embers.mp4" muted loop playsinline preload="none"></video>
-    <div class="bgshade"></div>
-  </div>
 
-  <header class="nav">
-    <a class="brand" href="#top" aria-label="PRIME — accueil">
-      <img src="assets/logo-prime.png" alt="Logo PRIME" width="40" height="40">
-      <span class="wordmark">PRIME</span>
-      <span class="mono ticker">(PRME&nbsp;:&nbsp;CSE)</span>
-    </a>
-    <nav class="links" aria-label="Navigation principale">
-      <a href="#eau">L'eau</a>
-      <a href="#marques">Les marques</a>
-      <a href="#media">Le média</a>
+  <!-- HERO plein écran : vidéo aurore (réétalonnée orange PRIME) + navbar superposée -->
+  <header class="hero">
+    <video class="hero-bg" src="assets/hero-aurora.mp4" poster="assets/hero-poster.jpg"
+      muted loop playsinline preload="none" aria-hidden="true"></video>
+
+    <nav class="nav">
+      <a class="brand" href="#top" aria-label="PRIME — accueil">
+        <img src="assets/logo-prime.png" alt="Logo PRIME" width="38" height="38">
+        <span class="wordmark">PRIME</span>
+      </a>
+      <div class="links">
+        <a href="#top">Accueil</a>
+        <a href="#eau">Le groupe
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <a href="#avantage">L'avantage</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="https://thecse.com/listings/prime-drink-group-corp/" target="_blank" rel="noopener">PRME sur le CSE</a>
+        <a class="btn btn-primary" href="mailto:info@prime-group.ca">Nous joindre</a>
+      </div>
+      <button class="burger" aria-label="Menu" aria-expanded="false">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="4" x2="20" y1="7" y2="7"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="17" y2="17"/></svg>
+      </button>
     </nav>
-    <a class="pill" href="mailto:info@prime-group.ca">Nous joindre</a>
+
+    <div class="menu" hidden>
+      <a href="#top">Accueil</a>
+      <a href="#eau">Le groupe</a>
+      <a href="#avantage">L'avantage</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-primary" href="mailto:info@prime-group.ca">Nous joindre</a>
+    </div>
+
+    <div class="hero-content" id="top">
+      <p class="pill" data-reveal>
+        <span class="pill-badge">PRME</span>
+        Prime Drink Group — coté au CSE
+      </p>
+      <h1 class="headline">PRIME bâtit les marques <em>de boissons</em> du Québec</h1>
+      <p class="sub" data-reveal>Les plus grandes réserves d'eau de source de la province, un portefeuille
+        de marques d'ici et une machine média de 15&nbsp;millions de vues par mois —
+        au service d'une seule mission&nbsp;: créer de la valeur durable.</p>
+      <div class="cta-row" data-reveal>
+        <a class="btn btn-primary big" href="#eau">Découvrir le groupe</a>
+        <a class="btn btn-dark big" href="mailto:info@prime-group.ca">Nous joindre</a>
+      </div>
+
+      <!-- Dashboard : la cote PRME réelle (CSE), style produit -->
+      <div class="dash" data-reveal>
+        <div class="dash-head">
+          <div class="dash-id">
+            <span class="tick">PRME</span>
+            <span class="dash-name">Prime Drink Group Corp.</span>
+            <span class="chip-active"><span class="dot"></span>Actif</span>
+          </div>
+          <div class="dash-tabs"><span class="on">CSE</span><span>CSE2</span></div>
+        </div>
+        <div class="dash-main">
+          <div class="dash-price">
+            <p class="lbl">Dernier prix</p>
+            <p class="px">0,045&nbsp;<span>$&nbsp;CAD</span></p>
+            <p class="chg">0,00 (0,00&nbsp;%)</p>
+          </div>
+          <svg class="spark" viewBox="0 0 320 84" fill="none" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 58 C 30 56, 48 44, 74 46 S 118 62, 148 56 S 198 30, 226 36 S 282 52, 320 44" stroke="url(#g)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M0 58 C 30 56, 48 44, 74 46 S 118 62, 148 56 S 198 30, 226 36 S 282 52, 320 44 L 320 84 L 0 84 Z" fill="url(#f)"/>
+            <defs>
+              <linearGradient id="g" x1="0" y1="0" x2="320" y2="0" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#ff7a18"/><stop offset="1" stop-color="#e8442a"/>
+              </linearGradient>
+              <linearGradient id="f" x1="0" y1="0" x2="0" y2="84" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#ff7a18" stop-opacity=".22"/><stop offset="1" stop-color="#ff7a18" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <dl class="dash-grid">
+          <div><dt>Volume</dt><dd>50&nbsp;381</dd></div>
+          <div><dt>Ouverture</dt><dd>0,045</dd></div>
+          <div><dt>Veille</dt><dd>0,045</dd></div>
+          <div><dt>Haut / bas du jour</dt><dd>0,05 / 0,045</dd></div>
+          <div><dt>52 semaines</dt><dd>0,11 / 0,045</dd></div>
+          <div><dt>Acheteur</dt><dd>0,045 × 339&nbsp;000</dd></div>
+          <div><dt>Vendeur</dt><dd>0,05 × 160&nbsp;000</dd></div>
+          <div><dt>Actions émises</dt><dd>372&nbsp;970&nbsp;512</dd></div>
+        </dl>
+        <p class="dash-foot">Industries diversifiées · Indice CSE Composite · Données CSE du 9 juillet 2026, 15&nbsp;h&nbsp;56 (à titre indicatif)</p>
+      </div>
+    </div>
   </header>
 
-  <main id="top">
-    <!-- HERO : promesse enfin claire -->
-    <section class="hero">
-      <p class="mono kicker" data-reveal>( GROUPE PRIME DRINK — MONTRÉAL, QUÉBEC )</p>
-      <h1 class="giant">PRIME bâtit les <em>marques de boissons</em> du Québec<span class="dot">.</span></h1>
-      <p class="lede" data-reveal>Les plus grandes réserves d'eau de source de la province.
-        Un portefeuille de marques d'ici. Une machine média de
-        <strong>15&nbsp;millions de vues par mois</strong>.</p>
-      <div class="cta-row" data-reveal>
-        <a class="pill big" href="#eau">Découvrir le groupe</a>
-        <a class="fleche" href="#eau" aria-label="Défiler vers la section suivante">→</a>
-      </div>
-      <p class="mono scrollhint" data-reveal>( défiler )</p>
-    </section>
-
+  <main>
     <!-- 01 EAU -->
     <section class="chap" id="eau">
-      <p class="mono label" data-reveal>[ 01 / L'EAU ]</p>
-      <h2 class="giant" data-reveal>3,4 milliards<br>de litres<span class="dot">.</span></h2>
+      <p class="label" data-reveal>[ 01 / L'EAU ]</p>
+      <h2 data-reveal>3,4 milliards de litres <em>à la source</em></h2>
       <p class="body" data-reveal>Tout commence à la source. PRIME détient l'accès aux plus grandes
-        réserves d'eau de source du Québec — la fondation du groupe,
-        et de chaque marque qui en naît.</p>
+        réserves d'eau de source du Québec — la fondation du groupe, et de chaque marque qui en naît.</p>
     </section>
 
     <!-- 02 MARQUES -->
-    <section class="chap right" id="marques">
-      <p class="mono label" data-reveal>[ 02 / LES MARQUES ]</p>
-      <h2 class="giant" data-reveal>Des marques d'ici,<br>bâties pour durer<span class="dot">.</span></h2>
+    <section class="chap" id="marques">
+      <p class="label" data-reveal>[ 02 / LES MARQUES ]</p>
+      <h2 data-reveal>Des marques d'ici, <em>bâties pour durer</em></h2>
       <p class="body" data-reveal>Un portefeuille de boissons développé, produit et distribué avec une
         infrastructure à l'échelle — de la source jusqu'à la tablette.</p>
     </section>
 
     <!-- 03 MÉDIA -->
     <section class="chap" id="media">
-      <p class="mono label" data-reveal>[ 03 / LE MÉDIA ]</p>
-      <h2 class="giant" data-reveal>15 millions de vues<br>par mois<span class="dot">.</span></h2>
+      <p class="label" data-reveal>[ 03 / LE MÉDIA ]</p>
+      <h2 data-reveal>15 millions de vues <em>par mois</em></h2>
       <p class="body" data-reveal>La plateforme d'Olivier Primeau met chaque marque du portefeuille
-        devant le Québec au complet. La visibilité n'est pas achetée&nbsp;:
-        elle est intégrée au groupe.</p>
+        devant le Québec au complet. La visibilité n'est pas achetée&nbsp;: elle est intégrée au groupe.</p>
     </section>
 
     <!-- L'AVANTAGE PRIME -->
     <section class="avantage" id="avantage">
-      <p class="mono label" data-reveal>[ L'AVANTAGE PRIME ]</p>
+      <p class="label" data-reveal>[ L'AVANTAGE PRIME ]</p>
       <ol class="rows">
-        <li data-reveal>
-          <span class="num">01</span>
-          <div><h3>Expertise marché</h3>
-          <p>Lire les tendances de consommation — et les occasions que les autres ne voient pas.</p></div>
-        </li>
-        <li data-reveal>
-          <span class="num">02</span>
-          <div><h3>Plateforme média</h3>
-          <p>15&nbsp;millions de vues mensuelles au service de la visibilité des marques.</p></div>
-        </li>
-        <li data-reveal>
-          <span class="num">03</span>
-          <div><h3>Infrastructure à l'échelle</h3>
-          <p>De la production à la distribution, livrée avec efficacité et précision.</p></div>
-        </li>
-        <li data-reveal>
-          <span class="num">04</span>
-          <div><h3>Création de valeur</h3>
-          <p>Pour les partenaires, les investisseurs et les actionnaires — à long terme.</p></div>
-        </li>
+        <li data-reveal><span class="num">01</span>
+          <div><h3>Expertise marché</h3><p>Lire les tendances de consommation — et les occasions que les autres ne voient pas.</p></div></li>
+        <li data-reveal><span class="num">02</span>
+          <div><h3>Plateforme média</h3><p>15&nbsp;millions de vues mensuelles au service de la visibilité des marques.</p></div></li>
+        <li data-reveal><span class="num">03</span>
+          <div><h3>Infrastructure à l'échelle</h3><p>De la production à la distribution, livrée avec efficacité et précision.</p></div></li>
+        <li data-reveal><span class="num">04</span>
+          <div><h3>Création de valeur</h3><p>Pour les partenaires, les investisseurs et les actionnaires — à long terme.</p></div></li>
       </ol>
     </section>
 
     <!-- FINALE -->
     <section class="finale" id="contact">
-      <h2 class="giant xxl" data-reveal>Investir.<br>S'associer.<br>Grandir<span class="dot">.</span></h2>
+      <h2 data-reveal>Investir. S'associer. <em>Grandir.</em></h2>
       <p class="body" data-reveal>Que vous soyez ici pour investir, devenir partenaire ou amener votre
         marque chez PRIME — on veut vous entendre.</p>
       <div class="cta-row" data-reveal>
-        <a class="pill big" href="mailto:info@prime-group.ca">Écrivez-nous</a>
-        <a class="fleche" href="mailto:info@prime-group.ca" aria-label="Écrire à PRIME">→</a>
+        <a class="btn btn-primary big" href="mailto:info@prime-group.ca">Écrivez-nous</a>
+        <a class="btn btn-dark big" href="https://thecse.com/listings/prime-drink-group-corp/" target="_blank" rel="noopener">PRME sur le CSE</a>
       </div>
       <div class="coords" data-reveal>
-        <p class="mono">609, 1188 av. Union, Montréal (Québec) H3B 0E5</p>
-        <p class="mono"><a href="mailto:info@prime-group.ca">info@prime-group.ca</a> ·
-          <a href="https://thecse.com/listings/prime-drink-group-corp/" target="_blank" rel="noopener">PRME sur le CSE ↗</a></p>
+        <p>609, 1188 av. Union, Montréal (Québec) H3B 0E5 · <a href="mailto:info@prime-group.ca">info@prime-group.ca</a></p>
         <p class="socials">
           <a href="https://www.instagram.com/primegroup_ca/" target="_blank" rel="noopener" aria-label="Instagram">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
@@ -130,9 +172,8 @@
   </main>
 
   <footer class="foot">
-    <p class="mono">© 2026 Prime Drink Group™. Tous droits réservés.</p>
-    <p class="mono credit">Démonstration de refonte par
-      <a href="https://www.dondisanteme.com" target="_blank" rel="noopener">Dondi Santeme</a>
+    <p>© 2026 Prime Drink Group™. Tous droits réservés.</p>
+    <p>Démonstration de refonte par <a href="https://www.dondisanteme.com" target="_blank" rel="noopener">Dondi Santeme</a>
       — non affilié à l'entreprise. Visuels d'ambiance générés par IA.</p>
   </footer>
 
